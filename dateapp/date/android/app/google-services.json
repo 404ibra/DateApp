@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "323137335762",
+    "project_id": "dateapp-3531c",
+    "storage_bucket": "dateapp-3531c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:323137335762:android:e566b6e800f218117b580b",
+        "android_client_info": {
+          "package_name": "com.example.date"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "323137335762-d1d4dlfv57l21ctao14fd0bvtr425ftv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBdmf4V0O_xHLoBug33dzX5_0jIrc0H1EQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "323137335762-d1d4dlfv57l21ctao14fd0bvtr425ftv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

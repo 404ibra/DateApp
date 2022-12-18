@@ -1,4 +1,5 @@
 import 'package:date/Screens/Auth/Views/register_screen_ui.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +16,17 @@ class RegisterScreen extends StatelessWidget {
     obscureText: true,
   );
 
-  void register() {}
+  void register() {
+    try {
+      FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email.controller.text,
+           password: pass.controller.text);
+    } on FirebaseAuthException catch(err){
+      
+    }
+    
+    catch (e, s) {}
+  }
 
   @override
   Widget build(BuildContext context) {
