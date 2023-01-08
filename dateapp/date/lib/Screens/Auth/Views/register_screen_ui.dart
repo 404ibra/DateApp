@@ -1,7 +1,6 @@
 //Packages
 import 'package:date/Constants/CustomColors.dart';
 import 'package:date/Screens/Auth/Components/custom_button.dart';
-import 'package:date/Screens/Auth/Components/custom_text_input.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,13 +17,13 @@ extension UI on RegisterScreen {
   Widget mainbuild(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: CustomAppBar(
+      appBar: const CustomAppBar(
         title: "Kayıt Ol",
         isTransParent: true,
       ),
       body: Column(
         children: [
-          LogoSection(
+          const LogoSection(
             isSmall: true,
           ),
           Column(
@@ -49,8 +48,8 @@ extension UI on RegisterScreen {
                       softWrap: true,
                       text: TextSpan(children: [
                         TextSpan(
-                            text: "Kullanıcı sözleşmeisi",
-                            style: TextStyle(
+                            text: "Kullanıcı sözleşmesi",
+                            style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                                 color: CustomColors.mainColor),
@@ -60,8 +59,8 @@ extension UI on RegisterScreen {
                               }),
                         TextSpan(
                             text: "'ni okudum \nve kabul ediyorum.",
-                            style:
-                                TextStyle(fontSize: 16, color: Colors.black87),
+                            style: const TextStyle(
+                                fontSize: 16, color: Colors.black87),
                             recognizer: TapGestureRecognizer()
                               ..onTap = () {
                                 licenceChecked.value;
@@ -70,8 +69,12 @@ extension UI on RegisterScreen {
                 ].row(),
               ),
               12.heightBox,
+
+              // TO DO
+              //bu normalde obx ile sarılıyor fakat bende hata verdi.
               CustomButton(
                 text: "Kayıt Ol",
+                onTap: register,
               ),
               CustomTextButton(
                 buttonText: "Giriş Yap",

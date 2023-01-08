@@ -8,7 +8,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
-import 'package:date/routes/routes.dart';
 
 import '../top_logo_sections.dart';
 
@@ -19,25 +18,26 @@ extension UI on LoginScreen {
       body: Stack(children: [
         Column(
           children: [
-            LogoSection(),
-            CustomInput(hint: "E-posta"),
+            const LogoSection(),
+            email,
             12.heightBox,
-            CustomInput(
-              hint: "Şifre",
-              obscureText: true,
-            ),
+            password,
             12.heightBox,
-            CustomButton(
-              text: "Giriş Yap",
-            ),
+            Obx(() {
+              return CustomButton(
+                isLoading: isLoading.value,
+                text: "Giriş Yap",
+                onTap: login,
+              );
+            }),
             12.heightBox,
             CustomTextButton(
               buttonText: "Şifremi Unuttum",
 
               //TO DO
-              onTap: () {},
+              onTap: lastpass,
             ),
-            140.heightBox,
+            40.heightBox,
             RichText(
                 text: TextSpan(children: [
               TextSpan(
@@ -45,17 +45,19 @@ extension UI on LoginScreen {
                   style: TextStyle(fontSize: 18, color: Colors.grey.shade700)),
               TextSpan(
                   text: "  Kayıt Ol",
-                  style: TextStyle(fontSize: 18, 
-                  fontWeight: FontWeight.bold,
-                  color: CustomColors.mainColor),
-                  recognizer: TapGestureRecognizer()..onTap = (){
-                  Get.to(RegisterScreen());
-                  })
+                  style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: CustomColors.mainColor),
+
+                  //   IMPORT LOOK AFTER
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Get.to(RegisterScreen());
+                    })
             ])),
             Row(
-              children: [
-
-              ],
+              children: [],
             )
           ],
         )

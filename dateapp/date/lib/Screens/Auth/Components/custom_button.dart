@@ -2,9 +2,12 @@ import 'package:date/Constants/CustomColors.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.text = ""});
+  const CustomButton(
+      {super.key, this.text = "", required this.onTap, this.isLoading = false});
 
   final String text;
+  final void Function() onTap;
+  final bool isLoading;
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -17,12 +20,16 @@ class CustomButton extends StatelessWidget {
               backgroundColor:
                   MaterialStateProperty.all<Color>(CustomColors.mainColor),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(15))),
+                  RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(15))),
             ),
-            onPressed: () {},
-            child: Text(text, style: TextStyle(
-              fontSize: 20,
-              color: Colors.white))),
+            onPressed: onTap,
+            child: isLoading
+                ? CircularProgressIndicator(
+                    color: Colors.white,
+                  )
+                : Text(text,
+                    style: const TextStyle(fontSize: 20, color: Colors.white))),
       ),
     );
   }
