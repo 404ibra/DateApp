@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
-import 'create_initial_profile.dart';
+import 'create_initial_profile_Step2.dart';
 
-extension UI on CreateInitialProfileScreen {
+extension UI on CreateProfileStep2Screen {
   @override
   Widget mainbuild(BuildContext context) {
     return Scaffold(
@@ -54,7 +54,7 @@ extension UI on CreateInitialProfileScreen {
               //bu normalde obx ile sarılıyor fakat bende hata verdi.
               CustomButton(
                 text: "Devam",
-                onTap: gotoNextStep,
+                onTap: completeRegister,
               ),
             ],
           ),
