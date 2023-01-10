@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+import 'Profile_Visibility_Explanantions.dart';
 import 'create_initial_profile.dart';
 
 extension UI on CreateInitialProfileScreen {
@@ -33,6 +34,19 @@ extension UI on CreateInitialProfileScreen {
               12.heightBox,
               name,
               12.heightBox,
+              5.heightBox,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 33),
+                child: Row(
+                  children: [
+                    Obx(
+                      () => ProfileVisibilityExplanantions(
+                          isProfileVisible: isProfileVisible.value),
+                    ),
+                  ],
+                ),
+              ),
+              5.heightBox,
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: [

@@ -1,13 +1,16 @@
 import 'dart:io';
 import 'dart:ui';
 
+import 'package:date/Constants/CustomColors.dart';
 import 'package:date/Helpers/Profile_Helpers.dart';
 import 'package:date/Screens/Auth/Components/custom_app_bar.dart';
 import 'package:date/Screens/Auth/Components/custom_button.dart';
+import 'package:date/Screens/Auth/Views/Profile_Visibility_Explanantions.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
 
+//LOCAL
 import 'create_initial_profile_Step2.dart';
 
 extension UI on CreateProfileStep2Screen {
@@ -23,14 +26,45 @@ extension UI on CreateProfileStep2Screen {
         children: [
           Column(
             children: [
-              12.heightBox,
-              ProfileHelpers()
-                  .entrcypedName(enteredName, isProfileVisible)!
-                  .text
-                  .make(),
-              22.heightBox,
-              //profil önizlemesi
-              profileReview(),
+              24.heightBox,
+              Row(
+                children: [
+                  const WidthBox(30),
+                  profileReview(),
+                  const WidthBox(20),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ProfileHelpers()
+                          .entrcypedName(enteredName, isProfileVisible)!
+                          .text
+                          .size(19)
+                          .make(),
+                      12.heightBox,
+                      const WidthBox(1),
+                      ProfileVisibilityExplanantions(
+                          isProfileVisible: isProfileVisible)
+                    ],
+                  ),
+                  const Spacer(),
+                ],
+              ),
+
+              SizedBox(
+                // height: 40,
+                // width: 200,
+                child: CupertinoSlidingSegmentedControl<String>(
+                  padding: const EdgeInsets.all(20),
+                  children: const {
+                    "Female": Text(
+                      "Kadın",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    "Male": Text("Erkek", style: TextStyle(fontSize: 20)),
+                  },
+                  onValueChanged: (value) {},
+                ),
+              ),
               12.heightBox,
               12.heightBox,
               // TO DO
@@ -48,8 +82,8 @@ extension UI on CreateProfileStep2Screen {
 
   Widget profileReview() {
     return SizedBox(
-      height: 200,
-      width: 200,
+      height: 100,
+      width: 100,
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
