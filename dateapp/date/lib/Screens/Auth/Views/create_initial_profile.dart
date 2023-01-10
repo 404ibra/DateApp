@@ -1,10 +1,8 @@
-import 'package:date/Screens/Auth/Components/custom_snackbar.dart';
 import 'package:date/Screens/Auth/Views/create_initial_profile%20_ui.dart';
-import 'package:date/Screens/Auth/Views/create_initial_profile_Step2.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:collection/collection.dart';
+
 import '../Components/custom_text_input.dart';
 
 class CreateInitialProfileScreen extends StatelessWidget {
@@ -12,14 +10,13 @@ class CreateInitialProfileScreen extends StatelessWidget {
     name.textChanged = (p0) => enteredName.value = p0;
   }
 
-  final isProfileVisible = false.obs;
+  final isProfileHidden = false.obs;
   final RxString enteredName = RxString("");
   final ImagePicker _picker = ImagePicker();
   Rx<String?> pickedImagefile = Rx(null);
   final name = CustomInput(hint: "İsminizi Yazın");
-
   String? entrcypedName(String name) {
-    if (isProfileVisible.isTrue) {
+    if (isProfileHidden.isFalse) {
       return name;
     }
     String enName = '';
@@ -27,25 +24,14 @@ class CreateInitialProfileScreen extends StatelessWidget {
       return name;
     }
     final nameParts = name.split(" ");
-    for (var currentNamePart in nameParts) {
-      enName += (currentNamePart[0].characters.firstOrNull ?? "").toUpperCase();
-      enName += "*" * (currentNamePart.length - 1);
-      enName += " ";
-    }
-    enName = enName.trim();
+    enName += nameParts[0].characters.first;
+    enName += "*" * 2;
     return enName;
   }
 
-  void gotoNextStep() {
-    if (name.controller.text.length < 4) {
-      CustomSnackBar.show("Hata", "Kullanıcı adı 4den daha fazla olmalı");
-      return;
-    }
-    if ((pickedImagefile.value ?? "").isEmpty) {
-      CustomSnackBar.show("Hata", "Lütfen bir fotoğraf koyudnuz");
-      return;
-    }
-    Get.to(() => CreateProfileStep2Screen());
+// TO DO
+  void completeRegister() async {
+    //
   }
 
   Future<void> pickPhoto() async {

@@ -35,9 +35,9 @@ extension UI on LoginScreen {
               buttonText: "Şifremi Unuttum",
 
               //TO DO
-              onTap: () {},
+              onTap: lastpass,
             ),
-            110.heightBox,
+            40.heightBox,
             RichText(
                 text: TextSpan(children: [
               TextSpan(

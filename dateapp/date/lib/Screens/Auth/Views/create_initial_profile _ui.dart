@@ -25,7 +25,6 @@ extension UI on CreateInitialProfileScreen {
             children: [
               12.heightBox,
               Obx(() => entrcypedName(enteredName.value)!.text.make()),
-              22.heightBox,
               //profil önizlemesi
               profileReview().onInkTap(() {
                 pickPhoto();
@@ -40,9 +39,9 @@ extension UI on CreateInitialProfileScreen {
                     return Checkbox(
                         fillColor:
                             MaterialStateProperty.all(CustomColors.mainColor),
-                        value: isProfileVisible.value,
+                        value: isProfileHidden.value,
                         onChanged: ((checked) {
-                          isProfileVisible.value = checked ?? false;
+                          isProfileHidden.value = checked ?? false;
                         }));
                   }),
                   "Profilim Gözüksün".text.make()
@@ -53,8 +52,8 @@ extension UI on CreateInitialProfileScreen {
               // TO DO
               //bu normalde obx ile sarılıyor fakat bende hata verdi.
               CustomButton(
-                text: "Devam",
-                onTap: gotoNextStep,
+                text: "Profili Oluştur",
+                onTap: completeRegister,
               ),
             ],
           ),
@@ -88,8 +87,8 @@ extension UI on CreateInitialProfileScreen {
               child: Obx(() {
                 return BackdropFilter(
                   filter: ImageFilter.blur(
-                    sigmaX: isProfileVisible.value ? 0.0 : 10.0,
-                    sigmaY: isProfileVisible.value ? 0.0 : 10.0,
+                    sigmaX: isProfileHidden.value ? 0.0 : 10.0,
+                    sigmaY: isProfileHidden.value ? 0.0 : 10.0,
                   ),
                   child: Container(
                     padding: const EdgeInsets.all(24),
