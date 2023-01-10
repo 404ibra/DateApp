@@ -83,7 +83,7 @@ extension UI on CreateProfileStep2Screen {
   Widget profileReview() {
     return SizedBox(
       height: 100,
-      width: 101,
+      width: 100,
       child: Stack(
         fit: StackFit.expand,
         children: <Widget>[
