@@ -4,6 +4,7 @@ import 'dart:ui';
 import 'package:date/Constants/CustomColors.dart';
 import 'package:date/Screens/Auth/Components/custom_app_bar.dart';
 import 'package:date/Screens/Auth/Components/custom_button.dart';
+import 'package:date/Screens/Auth/Components/custom_profile_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -28,8 +29,13 @@ extension UI on CreateInitialProfileScreen {
               Obx(() => entrcypedName(enteredName.value)!.text.make()),
               22.heightBox,
               //profil önizlemesi
-              profileReview().onInkTap(() {
-                pickPhoto();
+              Obx(() {
+                return CustomProfileImage(
+                  isProfileVisible: isProfileVisible.value,
+                  diskfilePath: pickedImagefile.value ?? "",
+                ).onInkTap(() {
+                  pickPhoto();
+                });
               }),
               12.heightBox,
               name,
@@ -77,44 +83,44 @@ extension UI on CreateInitialProfileScreen {
     );
   }
 
-  Widget profileReview() {
-    return SizedBox(
-      height: 200,
-      width: 200,
-      child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[
-          ClipOval(
-            child: Obx(
-              () => pickedImagefile.value == null
-                  ? const Icon(
-                      Icons.add_a_photo_outlined,
-                      size: 120,
-                    )
-                  : Image.file(
-                      File(pickedImagefile.value!),
-                      fit: BoxFit.fill,
-                    ),
-            ),
-          ),
-          Center(
-            child: ClipOval(
-              child: Obx(() {
-                return BackdropFilter(
-                  filter: ImageFilter.blur(
-                    sigmaX: isProfileVisible.value ? 0.0 : 10.0,
-                    sigmaY: isProfileVisible.value ? 0.0 : 10.0,
-                  ),
-                  child: Container(
-                    padding: const EdgeInsets.all(24),
-                    color: Colors.black12,
-                  ),
-                );
-              }),
-            ),
-          )
-        ],
-      ),
-    );
-  }
+  // Widget profileReview() {
+  //   return SizedBox(
+  //     height: 200,
+  //     width: 200,
+  //     child: Stack(
+  //       fit: StackFit.expand,
+  //       children: <Widget>[
+  //         ClipOval(
+  //           child: Obx(
+  //             () => pickedImagefile.value == null
+  //                 ? const Icon(
+  //                     Icons.add_a_photo_outlined,
+  //                     size: 120,
+  //                   )
+  //                 : Image.file(
+  //                     File(pickedImagefile.value!),
+  //                     fit: BoxFit.fill,
+  //                   ),
+  //           ),
+  //         ),
+  //         Center(
+  //           child: ClipOval(
+  //             child: Obx(() {
+  //               return BackdropFilter(
+  //                 filter: ImageFilter.blur(
+  //                   sigmaX: isProfileVisible.value ? 0.0 : 10.0,
+  //                   sigmaY: isProfileVisible.value ? 0.0 : 10.0,
+  //                 ),
+  //                 child: Container(
+  //                   padding: const EdgeInsets.all(24),
+  //                   color: Colors.black12,
+  //                 ),
+  //               );
+  //             }),
+  //           ),
+  //         )
+  //       ],
+  //     ),
+  //   );
+  // }
 }

@@ -1,3 +1,4 @@
+import 'package:date/Screens/Auth/Components/custom_snackbar.dart';
 import 'package:date/Screens/Auth/Views/create_initial_profile%20_Step2_ui%20.dart';
 import 'package:date/Screens/Auth/Views/create_initial_profile%20_ui.dart';
 import 'package:flutter/material.dart';
@@ -17,9 +18,13 @@ class CreateProfileStep2Screen extends StatelessWidget {
   final String enteredName;
   final ImagePicker _picker = ImagePicker();
   String pickedImagefile;
+  RxString selectedgender = RxString("");
 // TO DO
-  void completeRegister() async {
-    //
+  void completeRegister() {
+    if (selectedgender.isEmpty) {
+      CustomSnackBar.show(
+          "Bu alanı boş geçemezsinizç", "Sizi detaylıca tanımak istiyoruz");
+    }
   }
 
   @override
