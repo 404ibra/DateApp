@@ -70,7 +70,7 @@ extension UI on CreateProfileStep2Screen {
               // TO DO
               //bu normalde obx ile sarılıyor fakat bende hata verdi.
               CustomButton(
-                text: "Devam",
+                text: "Kayıt Ol",
                 onTap: completeRegister,
               ),
             ],
