@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date/Screens/Auth/Components/custom_snackbar.dart';
 import 'package:date/Screens/Auth/Components/custom_text_input.dart';
-import 'package:date/Screens/Auth/Views/LostPass.dart';
 import 'package:date/Screens/Auth/Views/login_screen_ui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -56,9 +55,9 @@ class LoginScreen extends StatelessWidget {
     }
   }
 
-  void lastpass() async {
-    Get.to(() => LostPassScreen());
-  }
+  // Future lastpass() async {
+  //   await Get.to(() => LostPassScreen());
+  // }
 
   @override
   Widget build(BuildContext context) {
