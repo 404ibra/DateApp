@@ -14,8 +14,9 @@ class CreateInitialProfileScreen extends StatelessWidget {
     name.textChanged = (p0) => enteredName.value = p0;
   }
 
-  final isProfileVisible = false.obs;
+  //entered name yazdığım kullanıcı adını gizlemek için yazdığım kısımdan oluyor
   final RxString enteredName = RxString("");
+  final isProfileVisible = false.obs;
   final ImagePicker _picker = ImagePicker();
   Rx<String?> pickedImagefile = Rx(null);
   final name = CustomInput(hint: "İsminizi Yazın");
@@ -48,7 +49,7 @@ class CreateInitialProfileScreen extends StatelessWidget {
       return;
     }
     Get.to(() => CreateProfileStep2Screen(
-          enteredName: name.controller.text,
+          fullName: name.controller.text,
           isProfileVisible: isProfileVisible.value,
           pickedImagefile: pickedImagefile.value!,
         ));

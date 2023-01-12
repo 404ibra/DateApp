@@ -40,7 +40,7 @@ extension UI on CreateProfileStep2Screen {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       ProfileHelpers()
-                          .entrcypedName(enteredName, isProfileVisible)!
+                          .entrcypedName(fullName, isProfileVisible)!
                           .text
                           .size(19)
                           .make(),
@@ -66,27 +66,27 @@ extension UI on CreateProfileStep2Screen {
                   ],
                 );
               }),
-              SizedBox(
-                height: 180,
-                child: ListWheelScrollView(
-                  itemExtent: 31,
-                  diameterRatio: 0.5,
-                  children: [
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                    "12".text.make(),
-                  ],
-                ),
-              ),
+              // SizedBox(
+              //   height: 180,
+              //   child: ListWheelScrollView(
+              //     itemExtent: 31,
+              //     diameterRatio: 0.5,
+              //     children: [
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //       "12".text.make(),
+              //     ],
+              //   ),
+              // ),
 
               12.heightBox,
               12.heightBox,
